@@ -4,11 +4,11 @@
 
 @section('content')
 
-<a href="{{ route('applicants.create') }}" class="btn btn-outline-secondary">Add applicant</a>
+<!-- <a href="{{ route('applicants.create') }}" class="btn btn-outline-secondary">Add applicant</a> -->
 
 <form class="row flex g-3 justify-content-center" action="{{ route('applicants.index') }}" method="GET">  
     <div class="col">
-        <x-textfield name="search" label="Search for an applicant" type="text" placeholder="Enter applicant name" :value="old('search', '')" />
+        <x-textfield name="search" label="" type="text" placeholder="Enter applicant name or email" :value="old('search', '')" />
     </div>
     <div class="col">
         <button class="btn btn-success" type="submit">Search</button>
@@ -46,6 +46,9 @@
     @endforeach
   </tbody>
 </table>
-
+<!-- Pagination Links -->
+<div class=" d-flex justify-content-center">
+    {{ $applicants->links() }}
+</div>
 
 @endsection

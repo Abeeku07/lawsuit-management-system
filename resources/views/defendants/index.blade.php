@@ -4,11 +4,11 @@
 
 @section('content')
 
-<a href="{{ route('defendants.create') }}" class="btn btn-outline-secondary">Add defendant</a>
+<!-- <a href="{{ route('defendants.create') }}" class="btn btn-outline-secondary">Add defendant</a> -->
 
 <form class="row flex g-3 justify-content-center" action="{{ route('defendants.index') }}" method="GET">  
     <div class="col">
-        <x-textfield name="search" label="Search for an defendant" type="text" placeholder="Enter defendant name" :value="old('search', '')" />
+        <x-textfield name="search" label="" type="text" placeholder="Enter defendant name or email" :value="old('search', '')" />
     </div>
     <div class="col">
         <button class="btn btn-success" type="submit">Search</button>
@@ -45,8 +45,10 @@
   </tbody>
 </table>
 
+  <div class=" d-flex justify-content-center">
+    {{ $defendants->links() }}
+</div>
+
 
 @endsection
-<div>
-    <!-- Let all your things have their places; let each part of your business have its time. - Benjamin Franklin -->
-</div>
+

@@ -47,6 +47,9 @@
     @endforeach
   </tbody>
 </table>
-
+  <!-- Pagination Links -->
+  <div class=" d-flex justify-content-center">
+    {{ $lawsuits->links() }}
+</div>
 
 @endsection

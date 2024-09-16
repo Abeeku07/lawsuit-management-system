@@ -40,7 +40,7 @@
                 <li>
                     <a href="{{ route('lawsuits.index') }} "> 
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                            <ion-icon name="library-outline"></ion-icon>
                         </span>
                         <span class="title">Lawsuits</span>
                     </a>
@@ -49,7 +49,7 @@
                 <li>
                     <a href="{{ route('courts.index') }}">
                         <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
+                            <ion-icon name="business-outline"></ion-icon>
                         </span>
                         <span class="title">Court</span>
                     </a>
@@ -58,7 +58,7 @@
                 <li>
                 <a href="{{ route('applicants.index') }}">
                         <span class="icon">
-                            <ion-icon name="log-in-outline"></ion-icon>
+                            <ion-icon name="person-outline"></ion-icon>
                         </span>
                         <span class="title">Applicants</span>
                     </a>
@@ -67,7 +67,7 @@
                 <li>
                 <a href="{{ route('defendants.index') }}">
                         <span class="icon">
-                            <ion-icon name="log-in-outline"></ion-icon>
+                            <ion-icon name="person-outline"></ion-icon>
                         </span>
                         <span class="title">Defendants</span>
                     </a>

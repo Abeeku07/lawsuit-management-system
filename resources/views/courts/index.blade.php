@@ -8,7 +8,7 @@
 
 <form class="row flex g-3 justify-content-center" action="{{ route('courts.index') }}" method="GET">  
     <div class="col">
-        <x-textfield name="search" label="Search for a court" type="text" placeholder="Enter court name" :value="old('search', '')" />
+        <x-textfield name="search" label="" type="text" placeholder="Enter court name or jurisdiction" :value="old('search', '')" />
     </div>
     <div class="col">
         <button class="btn btn-success" type="submit">Search</button>
@@ -46,6 +46,10 @@
     @endforeach
   </tbody>
 </table>
+
+<div class=" d-flex justify-content-center">
+    {{ $courts->links() }}
+</div>
 
 
 @endsection

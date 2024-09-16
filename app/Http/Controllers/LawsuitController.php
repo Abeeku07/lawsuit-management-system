@@ -18,27 +18,34 @@ class LawsuitController extends Controller
     public function index(Request $request)
     {
         $search = $request->query('search');
-        
+    
         if ($search) {
             $search = "%$search%";
-            
+    
             $lawsuits = Lawsuit::where('lawsuit_name', 'like', $search)
                 ->orWhere('citation', 'like', $search)
-                ->orWhere('applicant_name', 'like', $search)
-                ->orWhere('defendant_name', 'like', $search)
+                ->orWhereHas('applicant', function ($query) use ($search) {
+                    $query->where('name', 'like', $search);
+                })
+                ->orWhereHas('defendant', function ($query) use ($search) {
+                    $query->where('name', 'like', $search);
+                })
                 ->orderBy('lawsuit_name', 'asc')
-                ->paginate(5); 
+                ->paginate(5);
         } else {
             $lawsuits = Lawsuit::orderBy('lawsuit_name', 'asc')->simplePaginate(5);
         }
-
+    
         return view('lawsuits.index', compact('lawsuits'));
     }
+    
 
-    public function show(Lawsuit $lawsuit)
-    {
-        return view('lawsuits.show', compact('lawsuit'));
-    }
+    public function show(string $id)
+{
+    $lawsuit = Lawsuit::with(['applicant', 'defendant', 'court'])->findOrFail($id);
+    return view('lawsuits.show', ['lawsuit' => $lawsuit]);
+}
+
 
     public function create()
     {

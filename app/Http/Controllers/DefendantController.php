@@ -9,21 +9,31 @@ use App\Models\Applicant;
 
 class DefendantController extends Controller
 {
-    public function index(){
-        $defendants=Defendant::all();
-
-       return view('defendants.index',
-          [
-            "defendants"=>$defendants
-          ]);
+    public function index(Request $request)
+    {
+        $search = $request->query('search');
+    
+        if ($search) {
+            $search = "%$search%";
+    
+            $defendants = Defendant::where('name', 'like', $search)
+                ->orWhere('phone', 'like', $search)
+                ->orWhere('email', 'like', $search)
+                ->orderBy('name', 'asc')
+                ->paginate(5);
+        } else {
+            $defendants = Defendant::orderBy('name', 'asc')->simplePaginate(5);
         }
+    
+        return view('defendants.index', compact('defendants'));
+    }
+    
 
-    public function show(string $id){
-        return
-        [
-            'this is the show defendants function'
-        ];
-        }
+    public function show(string $id)
+    {
+        $defendant = Defendant::with('lawsuits')->findOrFail($id);
+        return view('defendants.show', ['defendant' => $defendant]);
+    }
 
        public function create(){
       

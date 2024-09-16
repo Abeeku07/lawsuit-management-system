@@ -9,21 +9,33 @@ use App\Models\Applicant;
 class ApplicantController extends Controller
 {
     // Display the list of applicants
-    public function index()
+    public function index(Request $request)
     {
-        $applicants = Applicant::all();
-
-        return view('applicants.index', [
-            'applicants' => $applicants
-        ]);
+        $search = $request->query('search');
+    
+        if ($search) {
+            $search = "%$search%";
+    
+            $applicants = Applicant::where('name', 'like', $search)
+                ->orWhere('phone', 'like', $search)
+                ->orWhere('email', 'like', $search)
+                ->orderBy('name', 'asc')
+                ->paginate(5);
+        } else {
+            $applicants = Applicant::orderBy('name', 'asc')->simplePaginate(5);
+        }
+    
+        return view('applicants.index', compact('applicants'));
     }
+    
 
     // Show an individual applicant (you can customize this view further)
     public function show(string $id)
     {
-        $applicant = Applicant::findOrFail($id);
+        $applicant = Applicant::with('lawsuits')->findOrFail($id);
         return view('applicants.show', ['applicant' => $applicant]);
     }
+    
 
     // Show the form to create a new applicant
     public function create()
