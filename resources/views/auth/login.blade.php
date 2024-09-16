@@ -8,23 +8,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <title>Login</title>
 </head>
-<body class= "text-bg-secondary p-3">
+<body class="text-bg-secondary p-3">
 
-          <!-- form  -->
-          <form class="container-sm mt-4" action="{{route('auth.login')}}" method="POST">
-          <x-alert-box />
-          <h4 class="mb-3">Welcome back. Please login</h1>
-        <x-textfield type="email" name="email" label="Email Address" placeholder="Please enter your email" />
-        <x-textfield type="password" name="password" label="Password" placeholder="Please enter your password" />
- 
-         @csrf 
-        <button type="submit" class="btn btn-primary">Submit</button>
-        
+    <!-- form -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-md-5">
+                <h1 class="text-center">Case Management System</h1> <!-- Centered h1 heading -->
+                <form action="{{ route('auth.login') }}" method="POST">
+                    @csrf
+                    <x-textfield type="email" name="email" label="" placeholder="Please enter your email" />
+                    <x-textfield type="password" name="password" label="" placeholder="Please enter your password" />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-
-          <!-- form ends -->
-    
 </body>
+
 </html>
 
 

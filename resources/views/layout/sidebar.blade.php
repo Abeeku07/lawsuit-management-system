@@ -29,49 +29,65 @@
                 </li>
 
                 <li>
-                <a href="{{ route('home') }}">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
+    <a href="{{ route('home') }}">
+        <span class="icon">
+            <ion-icon name="home-outline"></ion-icon>
+        </span>
+        <span class="title">Home</span>
+    </a>
+</li>
 
-                <li>
-                    <a href="{{ route('lawsuits.index') }} "> 
-                        <span class="icon">
-                            <ion-icon name="library-outline"></ion-icon>
-                        </span>
-                        <span class="title">Lawsuits</span>
-                    </a>
-                </li>
+<li>
+    <a href="{{ route('lawsuits.index') }}">
+        <span class="icon">
+            <ion-icon name="library-outline"></ion-icon>
+        </span>
+        <span class="title">Lawsuits</span>
+    </a>
+</li>
 
-                <li>
-                    <a href="{{ route('courts.index') }}">
-                        <span class="icon">
-                            <ion-icon name="business-outline"></ion-icon>
-                        </span>
-                        <span class="title">Court</span>
-                    </a>
-                </li>
+<li>
+    <a href="{{ route('courts.index') }}">
+        <span class="icon">
+            <ion-icon name="business-outline"></ion-icon>
+        </span>
+        <span class="title">Court</span>
+    </a>
+</li>
 
-                <li>
-                <a href="{{ route('applicants.index') }}">
-                        <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </span>
-                        <span class="title">Applicants</span>
-                    </a>
-                </li>
+<li>
+    <a href="{{ route('applicants.index') }}">
+        <span class="icon">
+            <ion-icon name="person-outline"></ion-icon>
+        </span>
+        <span class="title">Applicants</span>
+    </a>
+</li>
 
-                <li>
-                <a href="{{ route('defendants.index') }}">
-                        <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </span>
-                        <span class="title">Defendants</span>
-                    </a>
-                </li>
+<li>
+    <a href="{{ route('defendants.index') }}">
+        <span class="icon">
+            <ion-icon name="person-outline"></ion-icon>
+        </span>
+        <span class="title">Defendants</span>
+    </a>
+</li>
+
+<!-- Logout Link -->
+<li>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+        </span>
+        <span class="title">Logout</span>
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+</li>
+
+
+               
 
 
               
@@ -98,62 +114,7 @@
                     
                 </div>
             </div>
-
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">courts</div>
-                        <div class="cardName"></div>
-                        
-                    </div>
-
-                    <!-- <div class="iconBx">
-                        <ion-icon name="log-in-outline"></ion-icon>
-                    </div> -->
-                </div>
-
-                <div class="card"  >
-                    <div>
-                        <div class="numbers">laws</div>
-                        <div class="cardName"></div>
-                        <div class="cardName"></div> 
-                    </div>
-
-                    <!-- <div class="iconBx">
-                        <ion-icon name="add-outline"></ion-icon>
-                    </div> -->
-                </div>
-               
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">contact</div>
-                        <div class="cardName"></div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">settings</div>
-                        <div class="cardName"></div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cog-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
-
-         
-
-              
-
-
+           
 
 
 </body>

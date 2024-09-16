@@ -44,64 +44,15 @@ class AuthController extends Controller
             ])->onlyInput('email');
         }
     
-        public function logout(Request $request){
+        public function logout(Request $request)
+        {
             Auth::logout();
-     
             $request->session()->invalidate();
-         
             $request->session()->regenerateToken();
-         
+        
             return redirect('/');
         }
-//FORGOT PASSWORD
-        /* public function getForgotPasswordPage()
-        {
-            return view('auth.resetPage');
-        } */
-
-   /*      public function requestForgotPasswordLink(Request $request)
-        {
-            $request->validate([
-             'email'=>'required|email'
-            ]);
-
-            $status = Password::sendResetLink(
-                $request->only('email')
-            );
-
-
-            return $status === Password::RESET_LINK_SENT
-                ? back()->with(['alertMessage' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-         
-        } */
-/* 
-        public function getPasswordResetPage(Request $request, $token) {
-            $email = $request->query('email');
-            return view('auth.passwordResetPage',[ 'token' => $token , 'email' => $email ]);
-        } */
-    
-       /*  public function resetPassword(Request $request) {
-            $request->validate([
-                'email' => 'required|email|exists:users',
-                'token' => 'required',
-                'password' => 'required|confirmed|min:6|max:150'
-            ]);
-    
-            $status = Password::reset(
-                $request->only('email', 'password', 'password_confirmation', 'token'),
-                function (User $user, string $password) {
-                    $user->forceFill([
-                        'password' => Hash::make($password)
-                    ]);
-                    $user->save();
-                }
-            );
-    
-            return $status === Password::PASSWORD_RESET
-                        ? redirect()->route('auth.login')->with('alertMessage', __($status))
-                        : back()->withErrors(['email' => [__($status)]]);
-        } */
+        
 
 
 
