@@ -37,13 +37,45 @@ class AuthController extends Controller
                 return redirect()->intended('lawsuits');
             }
      
-
-    //THIS IS THE CODE THAT IS PREVENTING LOGGING IN        
+       
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         }
+
+
+      public function getRegisterPage()
+    {
+        return view('auth.register');
+    }
+
+ 
+    public function register(Request $request)
+    {
+     
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+     
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']), // Hash the password
+        ]);
+
+        
+        Auth::login($user);
+
+  
+        return redirect()->route('lawsuits.index')->with('success');
+    }
     
+
+
+
         public function logout(Request $request)
         {
             Auth::logout();

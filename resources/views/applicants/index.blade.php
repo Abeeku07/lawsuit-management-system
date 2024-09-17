@@ -15,7 +15,7 @@
     </div>
 </form>
 
-<table class="table table-hover mt-4">
+<table class="table table-hover">
   <thead>
     <tr>
 

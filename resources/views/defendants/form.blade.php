@@ -34,3 +34,7 @@
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary mt-4">Submit</button>
 </form>
+
+<div class="d-flex justify-content-center">
+    {{ $defendants->links() }}
+</div>

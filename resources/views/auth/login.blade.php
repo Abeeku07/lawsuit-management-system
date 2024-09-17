@@ -21,8 +21,16 @@
                     <x-textfield type="password" name="password" label="" placeholder="Please enter your password" />
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                <h5>
+    <p class="mt-3">
+        Don't have an account?
+        <a href="{{ route('auth.register') }}" class="btn btn-primary">Sign Up</a>
+    </p>
+</h5>
+
             </div>
         </div>
+      
     </div>
 
 </body>

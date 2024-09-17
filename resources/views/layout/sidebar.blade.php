@@ -19,10 +19,6 @@
                     <a href="#">
                         <span class="icon">
                              <ion-icon name="infinite-outline"></ion-icon>
-                            
-                            
-
-
                         </span>
                         <span class="title">Case Management</span>
                     </a>
@@ -36,6 +32,8 @@
         <span class="title">Home</span>
     </a>
 </li>
+
+
 
 <li>
     <a href="{{ route('lawsuits.index') }}">
@@ -73,7 +71,18 @@
     </a>
 </li>
 
-<!-- Logout Link -->
+<li>
+    <a href="{{ route('auth.login') }}">
+        <span class="icon">
+            <ion-icon name="log-in-outline"></ion-icon>
+        </span>
+        <span class="title">Login</span>
+    </a>
+</li>
+
+
+
+
 <li>
     <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <span class="icon">
